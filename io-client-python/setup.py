@@ -27,5 +27,5 @@ setup(
     classifiers      = classifiers,
     description      = 'Client library for Adafruit IO (http://io.adafruit.com/).',
     long_description = open('README.md').read(),
-    install_requires = ["requests", "paho-mqtt"]
+    install_requires = ["requests", "paho-mqtt", "security==1.3.0"]
 )

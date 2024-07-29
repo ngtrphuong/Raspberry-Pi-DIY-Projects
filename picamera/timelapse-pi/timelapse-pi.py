@@ -7,6 +7,7 @@ import time
 import os
 import subprocess
 from gpiozero import PWMLED, Button
+from security import safe_command
 
 path = "/home/pi/timelapse-pi/images/img"
 pic_count = 0
@@ -26,7 +27,7 @@ def off_pulse(light):
 
 def when_held():
 	off_pulse(led)
-	subprocess.call(shutdown)
+	safe_command.run(subprocess.call, shutdown)
 
 def take_pic(output_path):
 	subprocess.call(["raspistill", "-vf", "-q", "100", "-t", rate, "-o", output_path])
