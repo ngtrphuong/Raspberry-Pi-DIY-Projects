@@ -1,7 +1,7 @@
 ##### Libraries #####
 from sense_hat import SenseHat
 from time import sleep
-from random import choice
+import secrets
 
 ##### Functions #####
 
@@ -31,7 +31,7 @@ pressure=sense.get_pressure()
 
 pressure_diffs=[0.12,0.13,0.14,0.15]
 
-diff = choice(pressure_diffs)
+diff = secrets.choice(pressure_diffs)
 target_pressure=pressure+diff
 
 sense.set_pixels(pressure_pic)

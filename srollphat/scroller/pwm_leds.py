@@ -1,6 +1,7 @@
 # Import necessary libraries
-import time, threading, random
+import time, threading
 from gpiozero import LED, PWMLED
+import secrets
 
 # Set-up LEDs
 led_red = PWMLED(17)
@@ -34,7 +35,7 @@ class RandomLEDs(threading.Thread):
 	def run(self):
 		while True:
 			led_list = [led_blue,led_yellow,led_green,led_red]
-			the_led = random.choice(led_list)
+			the_led = secrets.choice(led_list)
 			self.fade_in_led(the_led, 0.03)
 			time.sleep(0.3)
 			self.fade_out_led(the_led, 0.02)

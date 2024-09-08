@@ -1,7 +1,7 @@
 # Adapted from blinkt example
-import random
 import time
 from mote import Mote
+import secrets
 
 mote = Mote()
 
@@ -14,7 +14,7 @@ try:
     while True:
         for channel in range(4):
             for i in range(16):
-                mote.set_pixel(channel+1,i, random.randint(0,255), random.randint(0,255), random.randint(0,255))
+                mote.set_pixel(channel+1,i, secrets.SystemRandom().randint(0,255), secrets.SystemRandom().randint(0,255), secrets.SystemRandom().randint(0,255))
             time.sleep(0.01)
             mote.show()
 

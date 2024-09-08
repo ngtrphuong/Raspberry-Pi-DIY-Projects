@@ -1,15 +1,15 @@
 from sense_hat import SenseHat
-from random import randint
 import pygame
 import pygame.locals as pgl
 from time import sleep
+import secrets
 
 STEP = 10
 
 def random_colour():
-    r = randint(0, int(255 / STEP)) * STEP
-    g = randint(0, int(255 / STEP)) * STEP
-    b = randint(0, int(255 / STEP)) * STEP
+    r = secrets.SystemRandom().randint(0, int(255 / STEP)) * STEP
+    g = secrets.SystemRandom().randint(0, int(255 / STEP)) * STEP
+    b = secrets.SystemRandom().randint(0, int(255 / STEP)) * STEP
     return (r, g, b)
 
 def set_centre_square(colour):

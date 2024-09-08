@@ -10,44 +10,44 @@ It does not interface to any specific IO board, but returns random values for
 the sensors and prints the output values to the console.
 """
 from __future__ import division
-import random
+import secrets
 
 explorerhat = False
 
 # Inputs: Digital
 
 def input_one_read():
-    digital = bool(random.getrandbits(1))
+    digital = bool(secrets.SystemRandom().getrandbits(1))
     return digital
 
 def input_two_read():
-    digital = bool(random.getrandbits(1))
+    digital = bool(secrets.SystemRandom().getrandbits(1))
     return digital
 
 def input_three_read():
-    digital = bool(random.getrandbits(1))
+    digital = bool(secrets.SystemRandom().getrandbits(1))
     return digital
 
 def input_four_read():
-    digital = bool(random.getrandbits(1))
+    digital = bool(secrets.SystemRandom().getrandbits(1))
     return digital
 
 # Inputs: Analog
 
 def analog_one_read():
-    analog = random.randrange(0, 5000) / 1000
+    analog = secrets.SystemRandom().randrange(0, 5000) / 1000
     return analog
 
 def analog_two_read():
-    analog = random.randrange(0, 5000) / 1000
+    analog = secrets.SystemRandom().randrange(0, 5000) / 1000
     return analog
 
 def analog_three_read():
-    analog = random.randrange(0, 5000) / 1000
+    analog = secrets.SystemRandom().randrange(0, 5000) / 1000
     return analog
 
 def analog_four_read():
-    analog = random.randrange(0, 5000) / 1000
+    analog = secrets.SystemRandom().randrange(0, 5000) / 1000
     return analog
 
 # Outputs: Motors

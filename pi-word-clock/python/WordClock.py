@@ -1,5 +1,6 @@
 #!/usr/bin/python
-import datetime,time,LEDGrid,random
+import datetime,time,LEDGrid
+import secrets
 
 class WordClock:
 
@@ -17,7 +18,7 @@ class WordClock:
   def showTime(self,font=None,now=time.time()):
     if self.randomColorChange and time.time()-self.colorLastChanged>self.colorChangeEvery:
       self.colorLastChanged=time.time()
-      self.myGrid.fg=random.choice(self.colors)
+      self.myGrid.fg=secrets.choice(self.colors)
     timeString='It is '
     words=[]
     hour=now.hour

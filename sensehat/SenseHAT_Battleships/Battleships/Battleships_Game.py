@@ -3,12 +3,11 @@
 ################################################
 
 '''Text to Speach from http://www.fromtexttospeech.com/'''
-
-import random
 import time
 import pygame
 from pygame.locals import *
 from sense_hat import SenseHat
+import secrets
 
 pygame.init()
 pygame.mixer.init()
@@ -43,7 +42,7 @@ def main():
 
     '''Creates a random mix of ships and water in a new hidden list'''
     for i in Sea:
-        item = random.randrange(1, 6)
+        item = secrets.SystemRandom().randrange(1, 6)
         if item == 1:
             Sea2.append(ship)
         elif item == 2:

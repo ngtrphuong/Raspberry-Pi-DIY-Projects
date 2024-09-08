@@ -1,13 +1,13 @@
 from gpiozero import Button, LED
 from time import sleep
-import random
+import secrets
 
 led = LED(25)
 
 player_1 = Button(21)
 player_2 = Button(2)
 
-time = random.uniform(5, 10)
+time = secrets.SystemRandom().uniform(5, 10)
 sleep(time)
 led.on()
 
