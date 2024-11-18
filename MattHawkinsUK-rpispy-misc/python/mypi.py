@@ -58,7 +58,7 @@ def getRevision():
 def getModel():
   # Extract Pi Model string
   try:
-    mymodel = open('/proc/device-tree/model').readline()
+    mymodel = open('/proc/device-tree/model').readline(5_000_000)
   except:
     mymodel = "Error"
 
@@ -89,8 +89,8 @@ def getIP(interface='eth0'):
     filename = 'ifconfig_' + interface + '.txt'
     os.system('ifconfig ' + interface + ' > /home/pi/' + filename)
     f = open('/home/pi/' + filename, 'r')
-    line = f.readline() # skip 1st line
-    line = f.readline() # read 2nd line
+    line = f.readline(5_000_000) # skip 1st line
+    line = f.readline(5_000_000) # read 2nd line
     line = line.strip()
     f.close()
 

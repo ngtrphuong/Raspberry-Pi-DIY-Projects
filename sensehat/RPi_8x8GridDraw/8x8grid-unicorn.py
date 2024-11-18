@@ -392,10 +392,10 @@ def importAni():
     frame_number = 1
     file = open('animation8x8.py')
     for r in range(3):
-        file.readline()
+        file.readline(5_000_000)
 
     for frame  in range(line_count-8):
-        buff = file.readline()
+        buff = file.readline(5_000_000)
 
         load_frame = buff.split('], [')
         #print load_frame
