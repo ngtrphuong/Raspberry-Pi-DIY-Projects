@@ -16,6 +16,7 @@
 import os
 import time
 import subprocess
+from security import safe_command
 
 # Full list of Exposure and White Balance options
 #list_ex  = ['off','auto','night','nightpreview','backlight',
@@ -57,7 +58,7 @@ try:
       photo_counter = photo_counter + 1
       filename = 'photo_' + ex + '_' + awb + '.jpg'
       cmd = 'raspistill -o ' + filename + ' -t 1000 -ex ' + ex + ' -awb ' + awb + ' -ev ' + str(photo_ev) + ' -w ' + str(photo_width) + ' -h ' + str(photo_height) + ' -rot ' + str(photo_rotate)
-      pid = subprocess.call(cmd, shell=True)
+      pid = safe_command.run(subprocess.call, cmd, shell=True)
       print(' [' + str(photo_counter) + ' of ' + str(total_photos) + '] ' + filename)    
       time.sleep(photo_interval)
   

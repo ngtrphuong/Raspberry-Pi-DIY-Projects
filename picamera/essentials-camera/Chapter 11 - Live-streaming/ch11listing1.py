@@ -1,5 +1,6 @@
 import socket
 import subprocess
+from security import safe_command
 
 # Start a socket listening for connections on 0.0.0.0:8000 (0.0.0.0 means
 # all interfaces)
@@ -14,7 +15,7 @@ try:
     # version if you would prefer to use mplayer instead of VLC
     cmdline = ['vlc', '--demux', 'h264', '-']
     #cmdline = ['mplayer', '-fps', '25', '-cache', '1024', '-']
-    player = subprocess.Popen(cmdline, stdin=subprocess.PIPE)
+    player = safe_command.run(subprocess.Popen, cmdline, stdin=subprocess.PIPE)
     while True:
         # Repeatedly read 1k of data from the connection and write it to
         # the media player's stdin
