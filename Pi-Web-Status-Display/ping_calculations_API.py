@@ -1,6 +1,7 @@
 import requests
+from security import safe_requests
 
-resp = requests.get('https://io.adafruit.com/api/feeds/ping/data', headers={'x-aio-key':'YOUR_ADAFRUIT_API_KEY'})
+resp = safe_requests.get('https://io.adafruit.com/api/feeds/ping/data', headers={'x-aio-key':'YOUR_ADAFRUIT_API_KEY'})
 if resp.status_code != 200:
     # This means something went wrong.
     raise ApiError('GET /tasks/ {}'.format(resp.status_code))

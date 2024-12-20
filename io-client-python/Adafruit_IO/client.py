@@ -26,6 +26,7 @@ import requests
 
 from .errors import RequestError, ThrottlingError
 from .model import Data, Feed, Group
+from security import safe_requests
 
 # set outgoing version, pulled from setup.py
 version = pkg_resources.require("Adafruit_IO")[0].version
@@ -74,7 +75,7 @@ class Client(object):
         return headers
 
     def _get(self, path):
-        response = requests.get(self._compose_url(path),
+        response = safe_requests.get(self._compose_url(path),
                                 headers=self._headers({'X-AIO-Key': self.key}),
                                 proxies=self.proxies)
         self._handle_error(response)
