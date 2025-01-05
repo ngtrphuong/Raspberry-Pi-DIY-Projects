@@ -76,7 +76,7 @@ class Client(object):
     def _get(self, path):
         response = requests.get(self._compose_url(path),
                                 headers=self._headers({'X-AIO-Key': self.key}),
-                                proxies=self.proxies)
+                                proxies=self.proxies, timeout=60)
         self._handle_error(response)
         return response.json()
 
@@ -85,7 +85,7 @@ class Client(object):
                                  headers=self._headers({'X-AIO-Key': self.key,
                                                         'Content-Type': 'application/json'}),
                                  proxies=self.proxies,
-                                 data=json.dumps(data))
+                                 data=json.dumps(data), timeout=60)
         self._handle_error(response)
         return response.json()
 
@@ -93,7 +93,7 @@ class Client(object):
         response = requests.delete(self._compose_url(path),
                                    headers=self._headers({'X-AIO-Key': self.key,
                                             'Content-Type': 'application/json'}),
-                                   proxies=self.proxies)
+                                   proxies=self.proxies, timeout=60)
         self._handle_error(response)
 
     # Data functionality.

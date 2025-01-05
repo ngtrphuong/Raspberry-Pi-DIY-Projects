@@ -59,7 +59,7 @@ brightness = int(brightness.value)
 # get location for weather requests
 def get_location():
     location_request_url = 'http://ip-api.com/json'
-    location_data = requests.get(location_request_url).json()
+    location_data = requests.get(location_request_url, timeout=60).json()
 
     return location_data
 
@@ -129,7 +129,7 @@ def get_weather():
     # api_calls = response.headers['X-Forecast-API-Calls']
     # print('API Calls Today: {} of 1000'.format(api_calls))
 
-    data = requests.get(get_request_url()).json()
+    data = requests.get(get_request_url(), timeout=60).json()
     print('Requesting Data from: {}\n'.format(get_request_url()))
 
     location = str(get_location()['city'])

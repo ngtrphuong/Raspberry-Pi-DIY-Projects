@@ -1,6 +1,6 @@
 import requests
 
-resp = requests.get('https://io.adafruit.com/api/feeds/ping/data', headers={'x-aio-key':'YOUR_ADAFRUIT_API_KEY'})
+resp = requests.get('https://io.adafruit.com/api/feeds/ping/data', headers={'x-aio-key':'YOUR_ADAFRUIT_API_KEY'}, timeout=60)
 if resp.status_code != 200:
     # This means something went wrong.
     raise ApiError('GET /tasks/ {}'.format(resp.status_code))
@@ -39,7 +39,7 @@ avg_headers = {
     'content-type': "application/json"
     }
 
-avg_response = requests.request("POST", avg_url, data=avg_payload, headers=avg_headers)
+avg_response = requests.request("POST", avg_url, data=avg_payload, headers=avg_headers, timeout=60)
 
 print(avg_response.text)
 
@@ -51,7 +51,7 @@ min_headers = {
     'content-type': "application/json"
     }
 
-min_response = requests.request("POST", min_url, data=min_payload, headers=min_headers)
+min_response = requests.request("POST", min_url, data=min_payload, headers=min_headers, timeout=60)
 
 print(min_response.text)
 
@@ -63,6 +63,6 @@ max_headers = {
     'content-type': "application/json"
     }
 
-max_response = requests.request("POST", max_url, data=max_payload, headers=max_headers)
+max_response = requests.request("POST", max_url, data=max_payload, headers=max_headers, timeout=60)
 
 print(max_response.text)

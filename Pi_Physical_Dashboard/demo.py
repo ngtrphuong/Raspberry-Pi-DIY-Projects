@@ -60,7 +60,7 @@ while (True):
     # details on usage:
     #   http://docs.python-requests.org/en/latest/user/quickstart/
     r = requests.post('{0}/widgets/{1}'.format(SERVER_URL, widget_name),
-                      data={'value': widget_value})
+                      data={'value': widget_value}, timeout=60)
     print('Updated widget "{0}" with value "{1}" and received response: {2}'.format(widget_name, widget_value, r.status_code))
     # Sleep for a small period of random time and do it all again.
     time.sleep(random.uniform(SLEEP_RANGE[0], SLEEP_RANGE[1]))
