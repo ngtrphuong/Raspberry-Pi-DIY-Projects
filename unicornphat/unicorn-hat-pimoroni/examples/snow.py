@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from random import randint
 from time import sleep
 
 import unicornhat as unicorn
+import secrets
 
 print("""Snow
 
@@ -40,7 +40,7 @@ def get_new_row():
 
     # get a new blank row and add a random brightness snowflake to a random column
     row = get_blank_row()
-    row[randint(0, width - 1)] = 50 + randint(0, 155)
+    row[secrets.SystemRandom().randint(0, width - 1)] = 50 + secrets.SystemRandom().randint(0, 155)
     return row
 
 

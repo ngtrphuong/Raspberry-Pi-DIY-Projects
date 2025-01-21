@@ -1,7 +1,7 @@
 #Coded by TB - 2016
-import random
 import time
 from mote import Mote
+import secrets
 
 mote = Mote()
 
@@ -13,7 +13,7 @@ mote.configure_channel(4, 16, False)
 try:
     while True:
         for channel in range(4):
-            pixels = random.sample(range(16), random.randint(1, 5))
+            pixels = secrets.SystemRandom().sample(range(16), secrets.SystemRandom().randint(1, 5))
             for i in range(16):
                 if i in pixels:
                     mote.set_pixel(channel+1,i, 255, 0, 255)

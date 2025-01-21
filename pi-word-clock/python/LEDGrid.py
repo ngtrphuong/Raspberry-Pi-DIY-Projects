@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import datetime,time,random,colorsys
+import datetime,time,colorsys
+import secrets
 
 class LEDGrid:
 
@@ -115,7 +116,7 @@ class LEDGrid:
   @staticmethod
   def randomColor():
     s=0.8
-    v=random.random();
+    v=secrets.SystemRandom().random();
     h=0.1*v
     rgb=colorsys.hsv_to_rgb(h,s,v)
     r = int(rgb[0]*255.0)
@@ -125,7 +126,7 @@ class LEDGrid:
 
   @staticmethod
   def randomColourFromSet():
-    c=random.sample(LEDGrid.colors,1)[0]
+    c=secrets.SystemRandom().sample(LEDGrid.colors,1)[0]
     #print (c)
     return LEDGrid.colors[c]
 

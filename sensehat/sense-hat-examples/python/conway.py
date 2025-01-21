@@ -1,7 +1,7 @@
 from itertools import product
-from random import choice
 from time import sleep
 from sense_hat import SenseHat
+import secrets
 
 
 sense = SenseHat()
@@ -48,7 +48,7 @@ class GameOfLife(object):
     def random_world(self):
         width, height = self.size
         world = product(range(width), range(height))
-        self.live_cells = {cell for cell in world if choice([0, 1])}
+        self.live_cells = {cell for cell in world if secrets.choice([0, 1])}
 
     def draw_cell(self, x, y):
         cell = (x, y)

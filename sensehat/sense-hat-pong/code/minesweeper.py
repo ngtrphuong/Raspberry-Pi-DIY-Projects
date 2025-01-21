@@ -1,7 +1,7 @@
 from sense_hat import SenseHat
-from random import choice
 from copy import deepcopy
 import curses
+import secrets
 
 
 sense = SenseHat()
@@ -18,7 +18,7 @@ ratios = [mine,clear,clear,clear]
 
 original_board=[]
 for i in range(8):
-    original_board.append([choice(ratios) for i in range(8)]) 
+    original_board.append([secrets.choice(ratios) for i in range(8)]) 
 
 player_board = deepcopy(original_board)
 

@@ -1,7 +1,7 @@
-import random
 from time import sleep
 
 from sense_hat import SenseHat
+import secrets
 
 sense=SenseHat()
 sense.clear()
@@ -17,12 +17,12 @@ def fade( pixel ):
 	
 
 while True:
-	rx=random.randint(0,3)
-	ry=random.randint(0,3)
-	if random.randint(0,100) < 25:
-		col=[	random.randint(0,255),
-			random.randint(0,255),
-			random.randint(0,255)
+	rx=secrets.SystemRandom().randint(0,3)
+	ry=secrets.SystemRandom().randint(0,3)
+	if secrets.SystemRandom().randint(0,100) < 25:
+		col=[	secrets.SystemRandom().randint(0,255),
+			secrets.SystemRandom().randint(0,255),
+			secrets.SystemRandom().randint(0,255)
 		]
 		if sense.get_pixel(rx,ry)==[0,0,0]:
 			sense.set_pixel(rx, ry, col)	

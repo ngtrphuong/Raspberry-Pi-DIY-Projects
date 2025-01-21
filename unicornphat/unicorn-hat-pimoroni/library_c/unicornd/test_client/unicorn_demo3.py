@@ -2,8 +2,8 @@
 
 import socket
 import struct
-from random import randint
 from time import sleep
+import secrets
 
 socket_path = "/var/run/unicornd.socket"
 
@@ -42,11 +42,11 @@ class UnicornDemo:
 
     def show_random(self):
         for i in range(100):
-            x = randint(0, 7)
-            y = randint(0, 7)
-            r = randint(0, 255)
-            g = randint(0, 255)
-            b = randint(0, 255)
+            x = secrets.SystemRandom().randint(0, 7)
+            y = secrets.SystemRandom().randint(0, 7)
+            r = secrets.SystemRandom().randint(0, 255)
+            g = secrets.SystemRandom().randint(0, 255)
+            b = secrets.SystemRandom().randint(0, 255)
             self.unicorn.set_pixel(x, y, r, g, b)
             self.unicorn.show()
             sleep(0.1)

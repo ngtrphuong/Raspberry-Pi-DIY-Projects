@@ -1,6 +1,6 @@
 import threading
-import random
 from pixmodule import PixModule
+import secrets
 
 class Snake(PixModule):
 
@@ -28,7 +28,7 @@ class Snake(PixModule):
 		old = self.snake[0]
 		if self.snake[0]==self.point:
 			self.snake.insert(len(self.snake),self.snake[:-1])
-			self.point = (random.randint(0,4),random.randint(0,4))
+			self.point = (secrets.SystemRandom().randint(0,4),secrets.SystemRandom().randint(0,4))
 		for x in xrange(1,len(self.snake)):
 			safe = self.snake[x]
 			self.snake[x] = old

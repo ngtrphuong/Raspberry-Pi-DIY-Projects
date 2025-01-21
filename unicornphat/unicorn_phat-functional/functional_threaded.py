@@ -7,9 +7,9 @@
 
 
 import unicornhat as unicorn
-from random import randint
 import time, math, colorsys
 import os, sys, subprocess, threading
+import secrets
 
 # Initialization
 unicorn.set_layout(unicorn.AUTO)
@@ -135,7 +135,7 @@ def random_color():
     Returns:
         int tuple: (R, G, B) values
     """
-    r, g, b = randint(0, 255), randint(0, 255), randint(0, 255)
+    r, g, b = secrets.SystemRandom().randint(0, 255), secrets.SystemRandom().randint(0, 255), secrets.SystemRandom().randint(0, 255)
     return (r, g, b)
 
 
@@ -171,8 +171,8 @@ def load_sparkles(color_function=None, update_rate=5):
         def random_position():
             """ Get the position of a random pixel bound by
             function_pos. """
-            x = randint(0, function_pos[load_sparkles])
-            y = randint(0, (height-1))
+            x = secrets.SystemRandom().randint(0, function_pos[load_sparkles])
+            y = secrets.SystemRandom().randint(0, (height-1))
             return (x,y)
         selected_pixel = random_position()
 
@@ -246,22 +246,22 @@ def load_matrix(update_rate=5):
     edge_pixels = []
     class LightPoint:
         def __init__(self):
-            self.direction = randint(1, 4)
+            self.direction = secrets.SystemRandom().randint(1, 4)
             if self.direction == 1:
-                self.x = randint(0, function_pos[load_matrix])
+                self.x = secrets.SystemRandom().randint(0, function_pos[load_matrix])
                 self.y = 0
             elif self.direction == 2:
                 self.x = 0
-                self.y = randint(0, height - 1)
+                self.y = secrets.SystemRandom().randint(0, height - 1)
             elif self.direction == 3:
-                self.x = randint(0, function_pos[load_matrix])
+                self.x = secrets.SystemRandom().randint(0, function_pos[load_matrix])
                 self.y = height - 1
             else:
                 self.x = function_pos[load_matrix] - 1
-                self.y = randint(0, height - 1)
+                self.y = secrets.SystemRandom().randint(0, height - 1)
             self.colour = []
             for i in range(0, 3):
-                self.colour.append(randint(100, 255))
+                self.colour.append(secrets.SystemRandom().randint(100, 255))
             self.oldxy = (self.x, self.y)
 
     def update_positions():
@@ -322,7 +322,7 @@ def load_matrix(update_rate=5):
     while True:
         tick = tick_func(function_values[load_fetcher]) if function_values[load_fetcher] < 12 else tick_func(12)
         for w in range(int(update_rate/tick)):
-            if len(points) < max_points and randint(0, 5) > 1:
+            if len(points) < max_points and secrets.SystemRandom().randint(0, 5) > 1:
                 points.append(LightPoint())
             update_positions()
             plot_points()

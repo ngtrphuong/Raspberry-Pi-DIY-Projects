@@ -1,9 +1,9 @@
 import logging
 import time
-import random
 
 from pydbus import SystemBus
 from gi.repository import GLib
+import secrets
 
 bus = SystemBus()
 loop = GLib.MainLoop()
@@ -188,7 +188,7 @@ class ButtonGame:
             return False
 
     def next_btn(self):
-        self.set_active(random.choice(list(self.btn_list.keys())))
+        self.set_active(secrets.choice(list(self.btn_list.keys())))
         logger.debug('Next button chosen: {}'.format(self.btn_active))
 
     def game_start(self):

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import time
-from random import randint
 
 import unicornhat as unicorn
+import secrets
 
 
 print("""Matrix
@@ -19,7 +19,7 @@ wrd_rgb = [[154, 173, 154], [0, 255, 0], [0, 200, 0], [0, 162, 0], [0, 145, 0], 
 
 clock = 0
 
-blue_pilled_population = [[randint(0,7), 7]]
+blue_pilled_population = [[secrets.SystemRandom().randint(0,7), 7]]
 while True:
         for person in blue_pilled_population:
                 y = person[1]
@@ -32,8 +32,8 @@ while True:
         time.sleep(0.1)
         clock += 1
         if clock % 5 == 0:
-                blue_pilled_population.append([randint(0,7), 7])
+                blue_pilled_population.append([secrets.SystemRandom().randint(0,7), 7])
         if clock % 7 == 0:
-                blue_pilled_population.append([randint(0,7), 7])
+                blue_pilled_population.append([secrets.SystemRandom().randint(0,7), 7])
         while len(blue_pilled_population) > 100:
                 blue_pilled_population.pop(0)

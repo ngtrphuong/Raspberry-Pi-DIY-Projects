@@ -1,6 +1,6 @@
 import threading
-import random
 from pixmodule import PixModule
+import secrets
 
 class GameOfLife(PixModule):
 
@@ -37,7 +37,7 @@ class GameOfLife(PixModule):
 				if(livingneightbours==3 and self.gameoflifearray[x][y]==False):
 					self.gameoflifearray[x][y]=True
 		if oldgame==self.gameoflifearray:
-			self.gameoflifearray=[[(random.random()>0.5) for x in range(5)] for x in range(5)]
+			self.gameoflifearray=[[(secrets.SystemRandom().random()>0.5) for x in range(5)] for x in range(5)]
 
 	def updateColor(self):
 		for x in xrange(0,5):

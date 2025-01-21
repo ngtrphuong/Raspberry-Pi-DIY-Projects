@@ -1,6 +1,6 @@
 import threading
-import random
 from pixmodule import PixModule
+import secrets
 
 class Pong(PixModule):
 
@@ -53,7 +53,7 @@ class Pong(PixModule):
 	def resetGame(self):
 		self.speed = 0
 		self.speedcounter = 0
-		boolean =  bool(random.getrandbits(1))
+		boolean =  bool(secrets.SystemRandom().getrandbits(1))
 		self.position =  24 if boolean else 0
 		self.direction = -1 if boolean else 1
 		self.startSleep = 0
