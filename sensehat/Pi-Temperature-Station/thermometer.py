@@ -8,7 +8,7 @@ from subprocess import *
 
 #Read the Adafruit API key in from file /home/pi/apikey.txt.
 file = open('/home/pi/apikey.txt', 'r')
-apikey = file.readline().replace("\n", '')
+apikey = file.readline(5_000_000).replace("\n", '')
 file.close()
 
 # Import library and create instance of REST client.
