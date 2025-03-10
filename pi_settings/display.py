@@ -6,9 +6,10 @@ import time, colorsys, psutil, subprocess
 import dot3k.lcd as lcd
 import dot3k.backlight as backlight
 from dot3k.menu import Menu, MenuOption
+from security import safe_command
 
 def run_cmd(cmd):
-	p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+	p = safe_command.run(subprocess.Popen, cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 	output = p.communicate()[0].rstrip()
 	return output
 

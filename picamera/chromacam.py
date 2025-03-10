@@ -8,6 +8,7 @@ import os
 import shlex
 import glob
 import tweepy  
+from security import safe_command
 
 # 2 commands needed to make the ramdisk if planning to run from ramdisk to gain some speed
 # sudo mkdir /mnt/ramdisk
@@ -89,7 +90,7 @@ camera.capture(folder+'imagecam.png')
 command_line = "/usr/bin/convert -limit thread 4 "+folder+"imagecam.png[1x1+10+10] -format '%[fx:int(255*r)],%[fx:int(255*g)],%[fx:int(255*b)]' info:"
 args = shlex.split(command_line)
 print(args)
-out = subprocess.Popen(args, stdout=subprocess.PIPE)
+out = safe_command.run(subprocess.Popen, args, stdout=subprocess.PIPE)
 output,err = out.communicate()
 print(str(output))
 stroutput = str(output)

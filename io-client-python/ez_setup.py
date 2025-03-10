@@ -25,6 +25,7 @@ import textwrap
 import contextlib
 
 from distutils import log
+from security import safe_command
 
 try:
     from urllib.request import urlopen
@@ -44,7 +45,7 @@ def _python_cmd(*args):
     Return True if the command succeeded.
     """
     args = (sys.executable,) + args
-    return subprocess.call(args) == 0
+    return safe_command.run(subprocess.call, args) == 0
 
 
 def _install(archive_filename, install_args=()):
