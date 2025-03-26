@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 import scrollphat
-import requests
 import time
+from security import safe_requests
 
 brightness = 2 # Scroll pHAT brightness 1-100
 updatePeriod = 5 # Update every in seconds
@@ -41,7 +41,7 @@ def process():
     try:
 
         params = {"key": apiKey}
-        r = requests.get(server, params=params, timeout=5)
+        r = safe_requests.get(server, params=params, timeout=5)
         count = int(r.text)
         update(count)
 

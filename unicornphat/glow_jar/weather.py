@@ -1,7 +1,7 @@
 from time import sleep
-import requests
 import json
 import unittest
+from security import safe_requests
 
 
 def get_MET_weather_observations(location):
@@ -15,7 +15,7 @@ def get_MET_weather_observations(location):
     API_key = "238ccea7-66bf-44cf-8b14-b0d7b2d787bf"
 
     query_url = "http://datapoint.metoffice.gov.uk/public/data/val/wxobs/all/json/{0}?res=hourly&key={1}".format(location, API_key)
-    response = requests.get(query_url)
+    response = safe_requests.get(query_url)
 
     if response.status_code != 200:
         print("I failed with code ".format(response.status_code))
