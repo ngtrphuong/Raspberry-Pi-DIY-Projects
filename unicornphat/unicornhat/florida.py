@@ -3,13 +3,13 @@ import datetime
 import time
 from datetime import timedelta
 import unicornhat as UH
-import random
+import secrets
 
 while True:
 	#Draw Mickey Ears
 	UH.rotation(0)
 	colours = [1,2,3]
-	colour = random.choice(colours)
+	colour = secrets.choice(colours)
 	if colour == 1:
 		r = 255
 		g = 0

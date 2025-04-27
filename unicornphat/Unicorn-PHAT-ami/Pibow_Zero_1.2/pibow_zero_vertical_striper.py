@@ -9,7 +9,9 @@
 # Author: Paul Ryan                                            #
 #                                                              #
 ################################################################
-import unicornhat, signal, time, random
+import unicornhat, signal, time
+import secrets
+
 unicornhat.set_layout(unicornhat.PHAT)
 unicornhat.brightness(0.5)
 unicornhat.rotation(180)
@@ -87,7 +89,7 @@ function_list = [
 
 def main():
 	while True:
-	    random.choice(function_list)()
+	    secrets.choice(function_list)()
 	
 if __name__ == '__main__':
     main()

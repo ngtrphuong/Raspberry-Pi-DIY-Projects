@@ -1,7 +1,7 @@
 ##### Libraries #####
 from sense_hat import SenseHat
 from time import sleep
-from random import choice
+import secrets
 
 ##### Functions #####
 
@@ -32,7 +32,7 @@ temp_diffs=[
       0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5
     ]
 
-diff = choice(temp_diffs)
+diff = secrets.choice(temp_diffs)
 
 target_temp=temp+diff
 

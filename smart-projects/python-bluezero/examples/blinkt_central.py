@@ -1,6 +1,6 @@
 from time import sleep
-from random import randrange
 from bluezero import blinkt
+import secrets
 
 
 leds = blinkt.BLE_blinkt(name='Blinkt')
@@ -15,10 +15,10 @@ for x in range(10):
 
 
 for y in range(180):
-    pix = randrange(1, 8)
-    red = randrange(0, 255)
-    green = randrange(0, 255)
-    blue = randrange(0, 255)
+    pix = secrets.SystemRandom().randrange(1, 8)
+    red = secrets.SystemRandom().randrange(0, 255)
+    green = secrets.SystemRandom().randrange(0, 255)
+    blue = secrets.SystemRandom().randrange(0, 255)
     leds.clear_all()
     leds.set_pixel(pix, red, green, blue)
     sleep(0.05)

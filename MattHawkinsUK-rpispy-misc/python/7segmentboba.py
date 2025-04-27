@@ -28,12 +28,12 @@
 import max7219.led as led
 import sys
 import time
-import random
+import secrets
 
 def getRandomChar():
   # Get a random character 
   charset = '0123456789abcdefghijklmnopqrstuvwxyz-'
-  val = random.randint(0,len(charset)-1)
+  val = secrets.SystemRandom().randint(0,len(charset)-1)
   return charset[val]
 
 if len(sys.argv)>1:

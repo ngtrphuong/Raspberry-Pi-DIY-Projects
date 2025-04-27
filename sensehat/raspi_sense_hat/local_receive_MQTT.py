@@ -1,10 +1,10 @@
 from sense_hat import SenseHat
-import random
 import time
 import paho.mqtt.client as paho
 from tinydb import TinyDB, Query
 import datetime
 import json
+import secrets
 
 sense = SenseHat()
 sense.set_rotation(180)
@@ -38,7 +38,7 @@ while True:
     else:  
         time.sleep(5)
         print(info)
-        sense.show_message(info, text_colour=[random.randrange(0,150), random.randrange(70,210), random.randrange (50,150)], scroll_speed = 0.1)
+        sense.show_message(info, text_colour=[secrets.SystemRandom().randrange(0,150), secrets.SystemRandom().randrange(70,210), secrets.SystemRandom().randrange(50,150)], scroll_speed = 0.1)
         db.insert({'datetime': str(datetime.datetime.now()), "sensor" : str(info)})
 
     

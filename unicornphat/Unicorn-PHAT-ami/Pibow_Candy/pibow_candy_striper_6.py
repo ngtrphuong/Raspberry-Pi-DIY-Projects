@@ -9,7 +9,8 @@
 # Author: Paul Ryan                                            #
 #                                                              #
 ################################################################
-import unicornhat, signal, time, random
+import unicornhat, signal, time
+import secrets
 
 unicornhat.set_layout(unicornhat.PHAT)
 unicornhat.brightness(0.5)
@@ -36,7 +37,7 @@ def pibow_candy_striper_5():
 	x_coordinate_list = x_coordinates
 	y_coordinate_list = y_coordinates
 	# Shuffle the list
-	random.shuffle(x_coordinate_list)
+	secrets.SystemRandom().shuffle(x_coordinate_list)
 	
 	for x in x_coordinate_list:
 		#Get the RGB color for the x coordinate

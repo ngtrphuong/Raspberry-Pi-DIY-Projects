@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import random
 import time
 
 import unicornhat as unicorn
+import secrets
 
 
 print("""Game Of Life
@@ -29,7 +29,7 @@ size = width*height
 
 class GameOfLife:
     def __init__(self):
-        self.board = [int(7 * random.getrandbits(1)) for _ in xrange(size)]
+        self.board = [int(7 * secrets.SystemRandom().getrandbits(1)) for _ in xrange(size)]
         self.color = [[154, 154, 174], [0, 0, 255], [0, 0, 200], [0, 0, 160], [0, 0, 140], [0, 0, 90], [0, 0, 60], [0, 0, 0,]]
 
     def value(self, x, y):

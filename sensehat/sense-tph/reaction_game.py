@@ -1,6 +1,6 @@
 from sense_hat import SenseHat
 from time import sleep
-from random import choice
+import secrets
 
 sense = SenseHat()
 
@@ -56,7 +56,7 @@ sense.show_message("Keep the arrow pointing up", scroll_speed=0.05, text_colour=
 while play:
     last_angle = angle
     while angle == last_angle:
-        angle = choice([0, 90, 180, 270])
+        angle = secrets.choice([0, 90, 180, 270])
     sense.set_rotation(angle)
     sense.set_pixels(arrow)
     sleep(pause)
