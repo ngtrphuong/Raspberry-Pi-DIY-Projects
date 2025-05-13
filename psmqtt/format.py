@@ -20,7 +20,7 @@ class Formatter:
         if cls.env is None:
             from jinja2 import Environment  # pip install jinja2
             import filters
-            cls.env = Environment()
+            cls.env = Environment(autoescape=True)
             filters.register_filters(cls.env)
 
         return cls.env
