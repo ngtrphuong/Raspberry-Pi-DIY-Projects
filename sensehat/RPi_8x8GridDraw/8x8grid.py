@@ -2,7 +2,7 @@ import os, sys
 
 if os.path.isfile("/proc/device-tree/hat/product"):
 	file = open("/proc/device-tree/hat/product","r")
-	hat = file.readline()
+	hat = file.readline(5_000_000)
 	if  hat == "Sense HAT\x00":
 		print('Sense HAT detected')
 		mypath = os.path.dirname(os.path.abspath(__file__))

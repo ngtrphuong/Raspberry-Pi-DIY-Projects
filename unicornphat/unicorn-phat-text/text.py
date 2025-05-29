@@ -73,7 +73,7 @@ def draw_char(c, pos):
 offset = -8
 while True:
     f = open('/home/pi/dev/unicorn-phat/sms.txt', 'r')
-    text = f.readline()
+    text = f.readline(5_000_000)
     i = i + 0.3
     for y in range(height):
         for x in range(width):
