@@ -12,6 +12,7 @@ import scrollphat
 from Adafruit_IO import Client
 from Adafruit_BME280 import *
 import logging.handlers
+from security import safe_requests
 
 # this is useful for locale string formats
 locale.setlocale(locale.LC_TIME, 'de_DE.utf-8')
@@ -129,7 +130,7 @@ def get_weather():
     # api_calls = response.headers['X-Forecast-API-Calls']
     # print('API Calls Today: {} of 1000'.format(api_calls))
 
-    data = requests.get(get_request_url()).json()
+    data = safe_requests.get(get_request_url()).json()
     print('Requesting Data from: {}\n'.format(get_request_url()))
 
     location = str(get_location()['city'])
