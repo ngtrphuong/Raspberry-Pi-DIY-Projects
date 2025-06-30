@@ -1,6 +1,6 @@
-import requests
 import json
 import time
+from security import safe_requests
 
 class download:
     def __init__(self):
@@ -11,7 +11,7 @@ class download:
         print (url)
         resCode = 0
         while(resCode!=200):
-            res = requests.get(url)
+            res = safe_requests.get(url)
             resCode = res.status_code
             print("HTTP/" + str(resCode))
             time.sleep(0.5)
