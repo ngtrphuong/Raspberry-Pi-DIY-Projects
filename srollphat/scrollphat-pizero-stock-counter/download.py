@@ -11,7 +11,7 @@ class download:
         print (url)
         resCode = 0
         while(resCode!=200):
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             resCode = res.status_code
             print("HTTP/" + str(resCode))
             time.sleep(0.5)
