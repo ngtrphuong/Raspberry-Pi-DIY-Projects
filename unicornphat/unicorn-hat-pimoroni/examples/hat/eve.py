@@ -2,9 +2,9 @@
 
 import colorsys
 import math
-import random
 import time
 from sys import exit
+import secrets
 
 try:
     import glib
@@ -26,7 +26,7 @@ unicorn.brightness(0.5)
 sin_off = [[0]*8 for i in range(8)]
 for y in range(8):
     for x in range(8):
-        sin_off[x][y] = random.random() * (math.pi * 2)
+        sin_off[x][y] = secrets.SystemRandom().random() * (math.pi * 2)
 
 tick_mask = [[0,0,0,0,0,0,0,0],
              [0,0,0,0,0,0,1,0],

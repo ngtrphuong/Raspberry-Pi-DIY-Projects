@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import time
-from random import randint
 
 import unicornhat as unicorn
+import secrets
 
 
 print("""Cross
@@ -26,23 +26,23 @@ class LightPoint:
 
     def __init__(self):
 
-        self.direction = randint(1, 4)
+        self.direction = secrets.SystemRandom().randint(1, 4)
         if self.direction == 1:
-            self.x = randint(0, width - 1)
+            self.x = secrets.SystemRandom().randint(0, width - 1)
             self.y = 0
         elif self.direction == 2:
             self.x = 0
-            self.y = randint(0, height - 1)
+            self.y = secrets.SystemRandom().randint(0, height - 1)
         elif self.direction == 3:
-            self.x = randint(0, width - 1)
+            self.x = secrets.SystemRandom().randint(0, width - 1)
             self.y = height - 1
         else:
             self.x = width - 1
-            self.y = randint(0, height - 1)
+            self.y = secrets.SystemRandom().randint(0, height - 1)
 
         self.colour = []
         for i in range(0, 3):
-            self.colour.append(randint(100, 255))
+            self.colour.append(secrets.SystemRandom().randint(100, 255))
 
 
 def update_positions():
@@ -76,7 +76,7 @@ def plot_points():
 
 while True:
 
-    if len(points) < 10 and randint(0, 5) > 1:
+    if len(points) < 10 and secrets.SystemRandom().randint(0, 5) > 1:
         points.append(LightPoint())
     plot_points()
     update_positions()

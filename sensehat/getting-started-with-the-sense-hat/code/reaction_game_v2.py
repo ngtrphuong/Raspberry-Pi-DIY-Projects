@@ -1,6 +1,6 @@
 from sense_hat import SenseHat
 import time
-import random
+import secrets
 
 sense = SenseHat()
 
@@ -82,11 +82,11 @@ while True:
     while play == True:
         last_arrow = arrow
         while arrow == last_arrow:
-          arrow = random.choice([0,90,180,270])
+          arrow = secrets.choice([0,90,180,270])
 
         sense.set_rotation(arrow)
 
-        num = random.random()
+        num = secrets.SystemRandom().random()
         print("humidity = " +str(sense.get_humidity()))
         if num < 0.1:
             plot_image(shake_img,w,bl)
@@ -120,7 +120,7 @@ while True:
         print(lives)
         if lives <= 0:
             play=False
-        if random.random() > 0.2:
+        if secrets.SystemRandom().random() > 0.2:
             pause = pause * 0.95
         time.sleep(0.5)
 

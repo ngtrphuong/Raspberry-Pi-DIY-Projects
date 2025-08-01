@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from random import randint
 from time import sleep
 
 import unicornhat as unicorn
+import secrets
 
 
 #setup the unicorn hat
@@ -25,9 +25,9 @@ def toggle(tog):
         #toggle has been called determine state
         if tog:
                 #randomise red, green and blue
-                r = randint(30, 255)
-                g = randint(30, 255)
-                b = randint(30, 255)
+                r = secrets.SystemRandom().randint(30, 255)
+                g = secrets.SystemRandom().randint(30, 255)
+                b = secrets.SystemRandom().randint(30, 255)
                 msg="On!"
         else:
                 #clear red, green and blue

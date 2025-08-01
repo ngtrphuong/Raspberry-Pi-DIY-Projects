@@ -17,7 +17,6 @@ from __future__ import print_function
 
 import datetime
 import os
-import random
 import sys
 import time
 
@@ -29,6 +28,7 @@ from apiclient import discovery
 from dateutil import parser
 from oauth2client import client
 from oauth2client import tools
+import secrets
 
 try:
     import argparse
@@ -89,7 +89,7 @@ def flash(flash_count, delay, color):
 def do_random(flash_count, delay):
     for index in range(flash_count):
         for i in range(8):
-            lights.set_pixel(i, random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            lights.set_pixel(i, secrets.SystemRandom().randint(0, 255), secrets.SystemRandom().randint(0, 255), secrets.SystemRandom().randint(0, 255))
         lights.show()
         time.sleep(delay)
 

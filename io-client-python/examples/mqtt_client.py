@@ -2,12 +2,12 @@
 # Author: Tony DiCola
 
 # Import standard python modules.
-import random
 import sys
 import time
 
 # Import Adafruit IO MQTT client.
 from Adafruit_IO import MQTTClient
+import secrets
 
 
 # Set to your Adafruit IO key & username below.
@@ -59,7 +59,7 @@ client.loop_background()
 # Now send new values every 10 seconds.
 print('Publishing a new message every 10 seconds (press Ctrl-C to quit)...')
 while True:
-    value = random.randint(0, 100)
+    value = secrets.SystemRandom().randint(0, 100)
     print('Publishing {0} to DemoFeed.'.format(value))
     client.publish('DemoFeed', value)
     time.sleep(10)

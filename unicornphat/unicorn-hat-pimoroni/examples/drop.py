@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import time
-from random import randint
 
 import unicornhat as unicorn
+import secrets
 
 
 print("""Drop
@@ -39,11 +39,11 @@ def setup():
 
 def drop_ball():
 
-    ball_colour = [randint(100, 255), randint(100, 255), randint(100, 255)]
-    ball_column = randint(0, (uh_width-3))
+    ball_colour = [secrets.SystemRandom().randint(100, 255), secrets.SystemRandom().randint(100, 255), secrets.SystemRandom().randint(100, 255)]
+    ball_column = secrets.SystemRandom().randint(0, (uh_width-3))
 
     while heights[ball_column] == (uh_height-1):
-        ball_column = randint(0, (uh_width-3))
+        ball_column = secrets.SystemRandom().randint(0, (uh_width-3))
     height = heights[ball_column]
     ball_y = (uh_height-1)
     unicorn.set_pixel(ball_column + 1, ball_y, ball_colour[0], ball_colour[1], ball_colour[2])

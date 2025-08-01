@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from random import randint
 
 import unicornhat as unicorn
+import secrets
 
 
 print("""Random Sparkles
@@ -19,10 +19,10 @@ unicorn.brightness(0.5)
 width,height=unicorn.get_shape()
 
 while True:
-    x = randint(0, (width-1))
-    y = randint(0, (height-1))
-    r = randint(0, 255)
-    g = randint(0, 255)
-    b = randint(0, 255)
+    x = secrets.SystemRandom().randint(0, (width-1))
+    y = secrets.SystemRandom().randint(0, (height-1))
+    r = secrets.SystemRandom().randint(0, 255)
+    g = secrets.SystemRandom().randint(0, 255)
+    b = secrets.SystemRandom().randint(0, 255)
     unicorn.set_pixel(x, y, r, g, b)
     unicorn.show()

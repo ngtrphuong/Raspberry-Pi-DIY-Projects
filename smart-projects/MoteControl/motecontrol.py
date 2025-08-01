@@ -3,8 +3,8 @@ import time, os, shutil
 from threading import Thread
 from mote import Mote
 from colorsys import hsv_to_rgb
-import random
 import struct
+import secrets
 
 mote = Mote()
 
@@ -82,9 +82,9 @@ def sparkles():
     while True:
         for channel in range(4):
             for pixel in range(16):
-                r_r = random.randint(0,200)
-                g_r = random.randint(0,200)
-                b_r = random.randint(0,200)
+                r_r = secrets.SystemRandom().randint(0,200)
+                g_r = secrets.SystemRandom().randint(0,200)
+                b_r = secrets.SystemRandom().randint(0,200)
                 mote.set_pixel(channel + 1, pixel, r_r, g_r, b_r)
             mote.show()
         time.sleep(0.2)
@@ -97,7 +97,7 @@ def disco():
     colours = [(255,0,0),(0,255,0), (0,0,255), (255,255,0), (255,20,147)]
     while True:
         for channel in range(4):
-            rc = random.choice(colours)
+            rc = secrets.choice(colours)
             for pixel in range(16):
                 mote.set_pixel(channel + 1, pixel, rc[0], rc[1], rc[2])
             mote.show()
@@ -132,10 +132,10 @@ def stars():
     while True:
         ran_chans = []
         for y in range(4):
-            ran_chans.append(random.randint(1,8))
+            ran_chans.append(secrets.SystemRandom().randint(1,8))
         ran_pxls = []
         for z in range(2):
-            ran_pxls.append(random.randint(0,32))
+            ran_pxls.append(secrets.SystemRandom().randint(0,32))
 
         for i in range(255):
 

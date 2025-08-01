@@ -19,8 +19,8 @@
 
 import os
 import tree
-import random
 import RPi.GPIO as GPIO
+import secrets
 
 # Some constants to identify each LED
 L0 = 1
@@ -47,7 +47,7 @@ tree.setup() # you must always call setup() first!
 
 # Loop until switch is pressed
 while GPIO.input(25)==0:
-  random_led = random.randint(0, 6)
+  random_led = secrets.SystemRandom().randint(0, 6)
   if (random_led == 0):   tree.leds_on_and_wait(L0, DELAY) # D0 on
   elif (random_led == 1): tree.leds_on_and_wait(L1, DELAY) # D1 on
   elif (random_led == 2): tree.leds_on_and_wait(L2, DELAY) # D2 on

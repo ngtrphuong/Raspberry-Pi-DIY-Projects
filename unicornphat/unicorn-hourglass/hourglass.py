@@ -1,11 +1,11 @@
 #!/usr/bin/python
 
 from datetime import datetime, timedelta
-import random
 import sys
 from time import sleep
 
 import unicornhat as unicorn
+import secrets
 
 demo = len(sys.argv) > 1 and sys.argv[1] == "--demo"
 delay = 0.01
@@ -54,7 +54,7 @@ def add_sand():
             cols += [x]
     if len(cols) == 0:
         return False
-    col = random.choice(cols)
+    col = secrets.choice(cols)
     dot(col, color=1)
     return True
 
@@ -65,7 +65,7 @@ def remove_sand():
             cols += [x]
     if len(cols) == 0:
         return False
-    col = random.choice(cols)
+    col = secrets.choice(cols)
     start = 0
     while get(col, start + 1) > 0:
         start += 1

@@ -10,7 +10,9 @@
 #                                                              #
 ################################################################
 
-import unicornhat, signal, time, random
+import unicornhat, signal, time
+import secrets
+
 unicornhat.set_layout(unicornhat.PHAT)
 unicornhat.brightness(0.5)
 unicornhat.rotation(180)
@@ -1036,13 +1038,13 @@ def pibow_candy_double_ripple_4():
 		ripple04, ripple05, ripple06, ripple07)
 
 def random_x_coordinate():
-    return int(random.choice(x_coordinates))
+    return int(secrets.choice(x_coordinates))
 
 def random_y_coordinate():
-    return int(random.choice(y_coordinates))
+    return int(secrets.choice(y_coordinates))
 
 def get_random_color():
-    color_tuple = random.choice(color_list) 
+    color_tuple = secrets.choice(color_list) 
     return int(color_tuple[0]), int(color_tuple[1]), int(color_tuple[2])  
 
 def light_up_random_led(r, g, b):
@@ -1098,7 +1100,7 @@ def pibow_candy_striper_4():
 def pibow_candy_striper_5():
 	#print "pibow_candy_striper_5"
 	x_coordinate_list = x_coordinates
-	random.shuffle(x_coordinate_list)
+	secrets.SystemRandom().shuffle(x_coordinate_list)
 	y_coordinate_list = y_coordinates
 	
 	pibow_candy_striper_shuffle(x_coordinate_list, y_coordinate_list)
@@ -1106,7 +1108,7 @@ def pibow_candy_striper_5():
 def pibow_candy_striper_6():
 	#print "pibow_candy_striper_6"
 	x_coordinate_list = x_coordinates
-	random.shuffle(x_coordinate_list)
+	secrets.SystemRandom().shuffle(x_coordinate_list)
 	y_coordinate_list = y_coordinates[::-1]
 	
 	pibow_candy_striper_shuffle(x_coordinate_list, y_coordinate_list)
@@ -1175,7 +1177,7 @@ def pibow_candy_striper_shuffle(x_coordinate_list, y_coordinate_list):
 	while seconds_elapsed < 15:
 		seconds_elapsed = time.time() - start_time
 		unicornhat.clear()
-		random.shuffle(x_coordinate_list)
+		secrets.SystemRandom().shuffle(x_coordinate_list)
 		for x in x_coordinate_list:
 			#Get the RGB color for the x coordinate
 			if x == 0:
@@ -1248,7 +1250,7 @@ def pibow_candy_striper_shuffle_alternate(x_coordinate_list, y_coordinate_list):
 	while seconds_elapsed < 15:
 		seconds_elapsed = time.time() - start_time
 		unicornhat.clear()
-		random.shuffle(x_coordinate_list)
+		secrets.SystemRandom().shuffle(x_coordinate_list)
 		for x in x_coordinate_list:
 			#Get the RGB color for the x coordinate
 			if x == 0:
@@ -1290,7 +1292,7 @@ function_list = [
 
 def main():
 	while True:
-	    random.choice(function_list)()
+	    secrets.choice(function_list)()
 	
 if __name__ == '__main__':
     main()

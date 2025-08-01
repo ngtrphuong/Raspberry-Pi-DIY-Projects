@@ -1,17 +1,17 @@
 from guizero import App, Text, Slider
 from sense_hat import SenseHat  # or use sense_emu
-from random import randint
 from threading import Thread
+import secrets
 
 sense = SenseHat()
 app = App("Random Sparkles", width=170, height=150, layout="grid")
 
 def values():
-    x = randint(0, 7)
-    y = randint(0, 7)
-    r = randint(0, rs.get())
-    g = randint(0, gs.get())
-    b = randint(0, bs.get())
+    x = secrets.SystemRandom().randint(0, 7)
+    y = secrets.SystemRandom().randint(0, 7)
+    r = secrets.SystemRandom().randint(0, rs.get())
+    g = secrets.SystemRandom().randint(0, gs.get())
+    b = secrets.SystemRandom().randint(0, bs.get())
     return x, y, r, g, b
 
 def update_display():
