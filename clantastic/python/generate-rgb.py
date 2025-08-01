@@ -1,7 +1,7 @@
 import time
-import random
 import paho.mqtt.client as mqtt
 import settings
+import secrets
 
 
 def on_publish(client, userdata, mid):
@@ -17,8 +17,8 @@ def main():
     rgb = ['red', 'green', 'blue']
 
     while True:
-        topic = 'rgb/{}'.format(random.choice(rgb))
-        payload = random.randint(0, 255)
+        topic = 'rgb/{}'.format(secrets.choice(rgb))
+        payload = secrets.SystemRandom().randint(0, 255)
 
         print('[MQTT] Publishing value of {} to channel {}'.format(payload, topic))
         mqttclient.publish(topic, payload, retain=True)

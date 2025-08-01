@@ -22,11 +22,11 @@ Author:  randomInteger
 """
 import colorsys
 import signal
-import random
 import socket
 import time
 import sys
 from blinkt import set_brightness, set_pixel, show
+import secrets
 
 def signal_handler(signal, frame):
     """
@@ -57,7 +57,7 @@ while True:
         if dns:
             #We have internet, play the happy lights.
             for i in range(8):
-                set_pixel(i, random.randint(0,255), random.randint(0,255), random.randint(0,255))
+                set_pixel(i, secrets.SystemRandom().randint(0,255), secrets.SystemRandom().randint(0,255), secrets.SystemRandom().randint(0,255))
         else:
             #DNS and/or internet services are down, play the angry lights
             for i in range(8):

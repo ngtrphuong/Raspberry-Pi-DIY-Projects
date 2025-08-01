@@ -31,8 +31,8 @@
 #--------------------------------------
 import max7219.led as led
 import time
-import random
 from datetime import datetime
+import secrets
 
 def date(device, deviceId):
     now   = datetime.now()
@@ -76,6 +76,6 @@ time.sleep(1)
 # Random Numbers
 while True:
   # Random float
-  num = random.uniform(0,99999)
+  num = secrets.SystemRandom().uniform(0,99999)
   device.write_number(deviceId=0, value=num, zeroPad=True, decimalPlaces=3)
   time.sleep(0.5)

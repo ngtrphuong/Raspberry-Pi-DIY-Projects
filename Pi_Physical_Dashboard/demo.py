@@ -25,10 +25,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-import random
 import time
 
 import requests
+import secrets
 
 
 SERVER_URL = 'http://raspberrypi:5000'  # URL of the Pi dashboard server.
@@ -53,9 +53,9 @@ widgets = {
 print('Press Ctrl-C to quit...')
 while (True):
     # Pick a random widget to update and send a random value.
-    widget = random.choice(widgets.items())
+    widget = secrets.choice(widgets.items())
     widget_name = widget[0]
-    widget_value = random.choice(widget[1])
+    widget_value = secrets.choice(widget[1])
     # Make the request using the requests library.  See their documentation for
     # details on usage:
     #   http://docs.python-requests.org/en/latest/user/quickstart/
@@ -63,4 +63,4 @@ while (True):
                       data={'value': widget_value})
     print('Updated widget "{0}" with value "{1}" and received response: {2}'.format(widget_name, widget_value, r.status_code))
     # Sleep for a small period of random time and do it all again.
-    time.sleep(random.uniform(SLEEP_RANGE[0], SLEEP_RANGE[1]))
+    time.sleep(secrets.SystemRandom().uniform(SLEEP_RANGE[0], SLEEP_RANGE[1]))

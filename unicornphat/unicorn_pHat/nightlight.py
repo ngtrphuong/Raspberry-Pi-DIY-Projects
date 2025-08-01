@@ -1,42 +1,42 @@
 #!/usr/bin/env python
 
 import unicornhat as unicorn
-from random import randint
 from time import sleep
 import datetime
 import time
+import secrets
 
 unicorn.set_layout(unicorn.PHAT)
 unicorn.brightness(0.3)
 
 
 def random():
-  x = randint(0, 7)
-  y = randint(0, 3)
-  r = randint(1, 255)
-  g = randint(1, 255)
-  b = randint(1, 255)
+  x = secrets.SystemRandom().randint(0, 7)
+  y = secrets.SystemRandom().randint(0, 3)
+  r = secrets.SystemRandom().randint(1, 255)
+  g = secrets.SystemRandom().randint(1, 255)
+  b = secrets.SystemRandom().randint(1, 255)
   unicorn.set_pixel(x, y, r , g, b)
   unicorn.show()  
 def white():
-  x = randint(0, 7)
-  y = randint(0, 3)
+  x = secrets.SystemRandom().randint(0, 7)
+  y = secrets.SystemRandom().randint(0, 3)
   r = 200
   g = 200
   b = 200
   unicorn.set_pixel(x, y, r , g, b)
   unicorn.show()
 def red():
-  x = randint(0, 7)
-  y = randint(0, 3)
+  x = secrets.SystemRandom().randint(0, 7)
+  y = secrets.SystemRandom().randint(0, 3)
   r = 255
   g = 0
   b = 0
   unicorn.set_pixel(x, y, r , g, b)
   unicorn.show()
 def blank():
-  x = randint(0, 7)
-  y = randint(0, 3)
+  x = secrets.SystemRandom().randint(0, 7)
+  y = secrets.SystemRandom().randint(0, 3)
   r = 0
   g = 0
   b = 0

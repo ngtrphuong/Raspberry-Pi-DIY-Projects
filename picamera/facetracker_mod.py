@@ -4,8 +4,9 @@
 
 # http://forums.pimoroni.com/t/pan-tilt-hat-roaming/5127/3
 
-import cv2, sys, time, os, random
+import cv2, sys, time, os
 from pantilthat import *
+import secrets
 
 # Load the BCM V4l2 driver for /dev/video0
 os.system('sudo modprobe bcm2835-v4l2')
@@ -115,8 +116,8 @@ while True:
         frames_since_face = frames_since_face + 1
         if frames_since_face > ROAM_START:
             frames_since_face = 0
-            cam_pan = random.randint(60,120)
-            cam_tilt = random.randint(60,120)
+            cam_pan = secrets.SystemRandom().randint(60,120)
+            cam_tilt = secrets.SystemRandom().randint(60,120)
             pan(int(cam_pan-90))
             tilt(int(cam_tilt-90))
     else:

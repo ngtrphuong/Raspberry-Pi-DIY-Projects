@@ -8,7 +8,8 @@
 # Author: Paul Ryan                                            #
 #                                                              #
 ################################################################
-import unicornhat, signal, time, random
+import unicornhat, signal, time
+import secrets
 
 unicornhat.set_layout(unicornhat.PHAT)
 unicornhat.brightness(0.5)
@@ -27,13 +28,13 @@ color_list = [
 
 
 def random_x_coordinate():
-    return int(random.choice(x))
+    return int(secrets.choice(x))
 
 def random_y_coordinate():
-    return int(random.choice(y))
+    return int(secrets.choice(y))
 
 def get_random_color():
-    color_tuple = random.choice(color_list) 
+    color_tuple = secrets.choice(color_list) 
     return int(color_tuple[0]), int(color_tuple[1]), int(color_tuple[2])  
 
 def light_up_random_led():
